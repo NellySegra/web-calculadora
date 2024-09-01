@@ -35,4 +35,15 @@ document.getElementById('converterForm').addEventListener('submit', function (ev
     resultDiv.textContent = `El resultado es: ${result.toFixed(2)} ${to.charAt(0).toUpperCase() + to.slice(1)}`;
 });
 
-
+    document.getElementById('from').addEventListener('change', function () {
+        const from = document.getElementById('from').value;
+        const toSelect = document.getElementById('to');
+    
+        Array.from(toSelect.options).forEach(option => {
+            option.disabled = option.value === from;
+        });
+    
+        if (toSelect.value === from) {
+            toSelect.value = '';
+        }
+    });
